@@ -93,6 +93,66 @@ namespace Game.Sprites {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IDK {
+            get {
+                object obj = ResourceManager.GetObject("IDK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Idle1 {
+            get {
+                object obj = ResourceManager.GetObject("Idle1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idle2 {
+            get {
+                object obj = ResourceManager.GetObject("idle2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idle3 {
+            get {
+                object obj = ResourceManager.GetObject("idle3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idle4 {
+            get {
+                object obj = ResourceManager.GetObject("idle4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idle5 {
+            get {
+                object obj = ResourceManager.GetObject("idle5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Items {
             get {
                 object obj = ResourceManager.GetObject("Items", resourceCulture);
@@ -136,6 +196,16 @@ namespace Game.Sprites {
         internal static System.Drawing.Bitmap Minotaur {
             get {
                 object obj = ResourceManager.GetObject("Minotaur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newMainHero {
+            get {
+                object obj = ResourceManager.GetObject("newMainHero", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

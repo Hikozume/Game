@@ -64,6 +64,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAnimated.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -76,6 +77,9 @@
     <Compile Include="WorldModel.cs" />
     <EmbeddedResource Include="DontKnowForm.resx">
       <DependentUpon>DontKnowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -132,6 +136,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Witch Sprite Sheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Idle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idle2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idle3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idle4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idle5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newMainHero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IDK.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
