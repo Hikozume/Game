@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public interface IAnimated
+    public interface IHaveAnimation
     {
-        int Size { get; set; }
-        Bitmap Model { get; set; }
-
         Dictionary<string, List<Image>> Animations { get; set; }
+        Image Sprite { get; set; }
+
+        void PlayAnimation(Graphics g);
+        List<Image> SetAnimation(int animFrames, int row, bool flip = false);
+
     }
 }

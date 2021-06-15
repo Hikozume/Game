@@ -15,6 +15,14 @@ namespace Game
     public partial class Form1 : Form
     {
         Player player;
+        List<Keys> Controls = new List<Keys>()
+        {
+            Keys.Up,
+            Keys.Down,
+            Keys.Space,
+            Keys.Right,
+            Keys.Left
+        };
         public Form1()
         {
             InitializeComponent();
@@ -50,7 +58,7 @@ namespace Game
         }
         public void Press(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Up|| e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+            if (Controls.Contains(e.KeyCode))
             {
                 player.Move(e);
             }

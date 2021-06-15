@@ -12,24 +12,30 @@ namespace Game
     {
         public int PosX{ get; set; }
         private int frame=0;
+        private bool flip;
+        private int jumpHeight;
+        private bool inAir;
+        public string Status { get; set; }
         public bool OnMove { get; set; }
         public int PosY { get; set; }
         public int Health { get; set; }
         public int Armor { get; set; }
+        public string Direction { get; set; }
         public int Size { get; set; }
+
         private Image Idle;
-        private Image ModelStat;
-        public Image Model { get; set; }
+        private Image Model;
+        private Image Sprite;
         public Dictionary<string,List<Image>> Animations { get; set; }
 
         public Player()
         {
             Health = 100;
             Armor = 100;
-            Model = Sprites.Sprites.IDK;
+            Sprite = Sprites.Sprites.IDK;
             Size = 100;
             PosX = 0;
-            PosY = 0;
+            PosY = 200;
             Animations = new Dictionary<string, List<Image>>();
             Animations.Add("Idle", SetAnimation(13, 0));
             Animations.Add("Run", SetAnimation(8, 1));
@@ -37,10 +43,10 @@ namespace Game
             Animations.Add("Jump", SetAnimation(6, 5));
             Animations.Add("Death", SetAnimation(7, 7));
             Idle = Animations["Idle"][0];
-            ModelStat = Idle;
+            Model = Idle;        
         }
 
-        private List<Image> SetAnimation(int animFrames, int row)
+        private List<Image> SetAnimation(int animFrames, int row,bool flip=false)
         {
             var frames = new List<Image>();
             Image part;
@@ -49,8 +55,9 @@ namespace Game
             {
                 part = new Bitmap(96, 96);
                 g = Graphics.FromImage(part);
-                g.DrawImage(Model, new Rectangle(new Point(0,0), new Size(96, 96)), 98*i, 96*row, 96, 96, GraphicsUnit.Pixel);
-                frames.Add(new Bitmap(part));              
+                g.DrawImage(Sprite, new Rectangle(new Point(0,0), new Size(Size, Size)), 98*i, 96*row, 96, 96, GraphicsUnit.Pixel);           
+                frames.Add(new Bitmap(part));
+
             }
             return frames;
         }
@@ -59,46 +66,75 @@ namespace Game
             switch (e.KeyCode)
             {
                 case Keys.Right:
-                    PosX += 10;
+                    Direction = "Right";
                     OnMove = true;
-                    ModelStatus("Run");
+                    Status = "Run";
                     break;
                 case Keys.Left:
-                    PosX -= 10;
+                    Direction = "Left";
                     OnMove = true;
-                    ModelStatus("Run");
+                    Status = "Run";
+                    break;
+                case Keys.Space:
+                    OnMove = true;
+                    Direction = "Idle";
+                    Status = "Attack";
                     break;
                 case Keys.Up:
+                    Direction = "Up";
                     OnMove = true;
-                    ModelStatus("Attack");
+                    if (inAir) break;
+                    inAir = true;
+                    jumpHeight = PosY;
+                    PosY -= 150;
+                    Status = "Jump";
                     break;
             }
         }
 
-        public void PlayAnimation(Graphics g)
-        {
-            if(OnMove==true) g.DrawImage(ModelStat, PosX, PosY);
-            else g.DrawImage(Idle, PosX, PosY);
+        public void PlayAnimation(Graphics g)=> g.DrawImage(ModelStatus(), PosX, PosY);
 
-            // Model = Animations["Idle"][0];
-        }
 
-        private Image ModelStatus(string animName)
+        private Image ModelStatus()
         {
+            Bitmap newFrame = new Bitmap(Model);
+
+            if (inAir)
+            {
+                if (PosY == jumpHeight) inAir = false;
+                else
+                {
+                    newFrame = new Bitmap(Animations["Jump"][2]);
+                    PosY += 2;
+                    if (flip) newFrame.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    return Model = newFrame;
+                }
+
+            }
             if (OnMove == true)
             {
-                ModelStat = Animations[animName][frame];
+                if (Direction == "Left")
+                {
+                    PosX -= 10;
+                    flip = true;
+                }
+                if (Direction == "Right")
+                {
+                    PosX += 10;
+                    flip = false;
+                }
+                newFrame = new Bitmap(Animations[Status][frame]);                
                 frame++;
-                if (frame >= Animations[animName].Count) frame = 0;
-                return ModelStat;
+                if (frame >= Animations[Status].Count) frame = 0;
             }
             if (OnMove == false)
             {
                 frame = 0;
-                ModelStat = Idle;
-                return ModelStat;
+                Status = "Idle";
+                newFrame = new Bitmap(Idle);
             }
-            return ModelStat;           
+            if (flip) newFrame.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            return Model=newFrame;
         }
 
     }
