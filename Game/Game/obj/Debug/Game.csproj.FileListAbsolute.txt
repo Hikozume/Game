@@ -10,3 +10,12 @@ C:\Users\big70\source\repos\Game\Game\Game\obj\Debug\Game.csproj.CoreCompileInpu
 C:\Users\big70\source\repos\Game\Game\Game\obj\Debug\Game.exe
 C:\Users\big70\source\repos\Game\Game\Game\obj\Debug\Game.pdb
 C:\Users\big70\source\repos\Game\Game\Game\obj\Debug\Game.Form1.resources
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.MenuForm.resources
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.Form1.resources
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.Sprites.Sprites.resources
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.exe
+C:\Users\Sofya\Source\Repos\Games\Game\Game\obj\Debug\Game.pdb

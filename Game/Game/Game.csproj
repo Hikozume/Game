@@ -52,11 +52,11 @@
     <Compile Include="AndNewForm.Designer.cs">
       <DependentUpon>AndNewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DontKnowForm.cs">
+    <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DontKnowForm.Designer.cs">
-      <DependentUpon>DontKnowForm.cs</DependentUpon>
+    <Compile Include="MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -75,8 +75,8 @@
       <DependentUpon>Sprites.resx</DependentUpon>
     </Compile>
     <Compile Include="WorldModel.cs" />
-    <EmbeddedResource Include="DontKnowForm.resx">
-      <DependentUpon>DontKnowForm.cs</DependentUpon>
+    <EmbeddedResource Include="MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -157,6 +157,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IDK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\MainMenuWith2Buttons.jpg" />
+    <Content Include="Resources\StartLock.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

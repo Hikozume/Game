@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game.Properties;
 using System.Windows.Forms;
 
 namespace Game
@@ -30,12 +31,17 @@ namespace Game
             timer1.Tick += new EventHandler(Update);
             KeyDown += new KeyEventHandler(Press);
             KeyUp += new KeyEventHandler(Unpress);
+            this.BackgroundImage = Resources.StartLock;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
             Initialization();
 
         }
 
         public void Initialization()
         {
+            WindowState = FormWindowState.Maximized;
+            MenuForm menu = new MenuForm();
+            menu.ShowDialog();
             player = new Player();
         }
 

@@ -35,7 +35,7 @@ namespace Game
             Sprite = Sprites.Sprites.IDK;
             Size = 100;
             PosX = 0;
-            PosY = 200;
+            PosY = 770;
             Animations = new Dictionary<string, List<Image>>();
             Animations.Add("Idle", SetAnimation(13, 0));
             Animations.Add("Run", SetAnimation(8, 1));
@@ -86,7 +86,6 @@ namespace Game
                     if (inAir) break;
                     inAir = true;
                     jumpHeight = PosY;
-                    PosY -= 150;
                     Status = "Jump";
                     break;
             }
@@ -101,29 +100,40 @@ namespace Game
 
             if (inAir)
             {
-                if (PosY == jumpHeight) inAir = false;
+                if (Direction == "Up" && PosY > 570)
+                {
+                    PosY -= 30;
+                    return Model = newFrame;
+                }
+                else
+                    Direction = "Down";
+                if (PosY >= jumpHeight)
+                {
+                    inAir = false;
+                    PosY = 770;
+                    return Model = newFrame;
+                }
                 else
                 {
                     newFrame = new Bitmap(Animations["Jump"][2]);
-                    PosY += 2;
+                    PosY += 15;
                     if (flip) newFrame.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     return Model = newFrame;
                 }
-
             }
             if (OnMove == true)
             {
                 if (Direction == "Left")
                 {
-                    PosX -= 10;
+                    if (PosX > 0) PosX -= 10;
                     flip = true;
                 }
                 if (Direction == "Right")
                 {
-                    PosX += 10;
+                    if (PosX < Screen.PrimaryScreen.WorkingArea.Width - 100) PosX += 10;
                     flip = false;
                 }
-                newFrame = new Bitmap(Animations[Status][frame]);                
+                newFrame = new Bitmap(Animations[Status][frame]);
                 frame++;
                 if (frame >= Animations[Status].Count) frame = 0;
             }
