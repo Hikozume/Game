@@ -63,6 +63,16 @@ namespace Game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FinalLock {
+            get {
+                object obj = ResourceManager.GetObject("FinalLock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MainMenuWith2Buttons {
             get {
                 object obj = ResourceManager.GetObject("MainMenuWith2Buttons", resourceCulture);

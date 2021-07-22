@@ -52,6 +52,12 @@
     <Compile Include="AndNewForm.Designer.cs">
       <DependentUpon>AndNewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinalLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinalLevel.Designer.cs">
+      <DependentUpon>FinalLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Points.cs" />
     <Compile Include="Cobra.cs" />
     <Compile Include="Level2.cs">
@@ -98,6 +104,9 @@
       <DependentUpon>Sprites.resx</DependentUpon>
     </Compile>
     <Compile Include="WorldModel.cs" />
+    <EmbeddedResource Include="FinalLevel.resx">
+      <DependentUpon>FinalLevel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Level2.resx">
       <DependentUpon>Level2.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Barrel.png" />
+    <Content Include="Resources\FinalLock.jpg" />
     <Content Include="Resources\MainMenuWith2Buttons.jpg" />
     <Content Include="Resources\Pointer.png" />
     <Content Include="Resources\SecondLocation.jpg" />

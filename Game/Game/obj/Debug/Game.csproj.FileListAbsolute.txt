@@ -34,3 +34,4 @@ C:\Users\Admin\Source\Repos\Hikozume\Game\Game\Game\obj\Debug\Game.pdb
 C:\Users\Admin\Source\Repos\Hikozume\Game\Game\Game\obj\Debug\Game.Inventory.resources
 C:\Users\Admin\Source\Repos\Hikozume\Game\Game\Game\obj\Debug\Game.Loading.resources
 C:\Users\Admin\Source\Repos\Hikozume\Game\Game\Game\obj\Debug\Game.Level2.resources
+C:\Users\Admin\source\repos\Hikozume\Game\Game\Game\obj\Debug\Game.FinalLevel.resources

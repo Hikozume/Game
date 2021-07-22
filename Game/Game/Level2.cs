@@ -16,12 +16,10 @@ namespace Game
     {
         Player player;
         Inventory inventory;
-        Loading load = new Loading();
-        Levels levels = new Levels();
+        Cobra cobra;
 
         new readonly List<Keys> Control = new List<Keys>()
         {
-            //Keys.Up,
             Keys.Down,
             Keys.Space,
             Keys.Right,
@@ -38,14 +36,23 @@ namespace Game
             KeyUp += new KeyEventHandler(Unpress);
             this.BackgroundImage = Resources.SecondLocation;
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            //Health.Text = player.Health.ToString();
             Initialization();
+
         }
 
         public void Initialization()
         {
             player = new Player();
+            cobra = new Cobra();
+            cobra.PosX = 500;
+            cobra.PosY = Screen.PrimaryScreen.Bounds.Size.Height - 70;
             inventory = new Inventory(player);
+            base.Controls.Add(Health);
+            base.Controls.Add(Score);
+            Health.Text = "Health " + player.Health.ToString();
+            Health.Visible = true;
+            Score.Text = "Score " + Points.point.ToString();
+            Score.Visible = true;
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
@@ -57,13 +64,14 @@ namespace Game
 
         public void Press(object sender, KeyEventArgs e)
         {
+            Health.Text = "Health " + player.Health.ToString();
             MesageToExit();
             if (Control.Contains(e.KeyCode))
                 player.Move(e);
             if (e.KeyCode == Keys.I)
                 inventory.Show();
             if (e.KeyCode == Keys.Escape)
-                Close();
+                Application.Exit();
             if (e.KeyCode == Keys.F && MesageToExit())
             {
                 FormCollection fc = Application.OpenForms;
@@ -75,12 +83,26 @@ namespace Game
 
                 if (!open)
                 {
-                    load.Show();
-                    Thread.Sleep(1000);
-                    load.Hide();
+                    FinalLevel level = new FinalLevel();
+                    level.Show();
+                    this.Hide();
                 }
             }
-
+            if (e.KeyCode == Keys.Space)
+            {
+                player.OnMove = true;
+                player.Direction = "Idle";
+                player.Status = "Attack";
+                if (Math.Abs(player.PosX - cobra.PosX) <= 20 && cobra.Health >= 0)
+                {
+                    cobra.Health -= 10;
+                }
+                if (cobra.Health == 0)
+                {
+                    Points.point += cobra.point;
+                    Score.Text = "Score " + Points.point.ToString();
+                }
+            }
         }
 
         public void Unpress(object sender, KeyEventArgs e)
@@ -95,8 +117,7 @@ namespace Game
 
         Label LM = new Label()
         {
-            Size = new Size(25, 25),
-            BackColor = Color.Transparent
+            Size = new Size(25, 25)
         };
 
         public bool MesageToExit()
@@ -119,10 +140,16 @@ namespace Game
 
         Label Health = new Label()
         {
-            Size = new Size(25, 25),
-            //BackColor = Color.Transparent
-            Location = new Point(500, 100),
-            Visible = true                       
+            Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 204),
+            Size = new Size(130, 30),
+            Location = new Point(900, 25)
+        };
+
+        Label Score = new Label()
+        {
+            Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 204),
+            Size = new Size(130, 30),
+            Location = new Point(900, 50)
         };
     }
 }

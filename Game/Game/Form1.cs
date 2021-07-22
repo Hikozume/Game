@@ -22,15 +22,11 @@ namespace Game
 
         new readonly List<Keys> Controls = new List<Keys>()
         {
-            //Keys.Up,
             Keys.Down,
             Keys.Space,
             Keys.Right,
             Keys.Left
         };
-
-        //Loading load = new Loading();
-        //Levels levels = new Levels();
 
         public Form1()
         {
@@ -71,6 +67,7 @@ namespace Game
             timer1.Start();
             // graph.DrawImage(player.Model, new Rectangle(new Point(50,50),new Size(100,100)),0,0,96,96,GraphicsUnit.Pixel);
         }
+
         // Может быть реализовать таймер сюда чтобы показовало снесенное ХП
         //Label HP = new Label()
         //{
@@ -93,6 +90,7 @@ namespace Game
         //        return false;
         //    }
         //}
+
         public void Press(object sender, KeyEventArgs e)
         {
             Health.Text = "Health " + player.Health.ToString();
@@ -102,7 +100,7 @@ namespace Game
             if (e.KeyCode == Keys.I)
                 inventory.Show();
             if (e.KeyCode == Keys.Escape)
-                Close();
+                Application.Exit();
             if (e.KeyCode == Keys.F && MesageToExit())
             {
                 FormCollection fc = Application.OpenForms;
@@ -115,11 +113,11 @@ namespace Game
                 if (!open)
                 {
                     //load.Show();
+                    //Thread.Sleep(1000);
+                    //load.Hide();
                     Level2 level = new Level2();
                     level.Show();
                     this.Hide();
-                    //Thread.Sleep(1000);
-                    //load.Hide();
                 }
             }
             if (e.KeyCode == Keys.Space)
@@ -151,8 +149,7 @@ namespace Game
 
         Label LM = new Label()
         {
-            Size = new Size(25, 25),
-            //BackColor = Color.Transparent,
+            Size = new Size(25, 25)
         };
         
 
