@@ -52,12 +52,14 @@
     <Compile Include="AndNewForm.Designer.cs">
       <DependentUpon>AndNewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cobra.cs" />
     <Compile Include="Level2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Level2.Designer.cs">
       <DependentUpon>Level2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Point.cs" />
     <Compile Include="Units.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Loading.cs">
