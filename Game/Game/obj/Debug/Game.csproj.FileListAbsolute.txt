@@ -49,3 +49,4 @@ C:\Users\big70\Source\Repos\Game2\Game\Game\obj\Debug\Game.csproj.GenerateResour
 C:\Users\big70\Source\Repos\Game2\Game\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\big70\Source\Repos\Game2\Game\Game\obj\Debug\Game.exe
 C:\Users\big70\Source\Repos\Game2\Game\Game\obj\Debug\Game.pdb
+C:\Users\big70\Source\Repos\Game2\Game\Game\obj\Debug\Game.FinalLevel.resources

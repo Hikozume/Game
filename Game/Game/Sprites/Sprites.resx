@@ -148,6 +148,9 @@
   <data name="Minotaur" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minotaur - Sprite Sheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NewGhoul" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewGhoul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="newMainHero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\newMainHero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

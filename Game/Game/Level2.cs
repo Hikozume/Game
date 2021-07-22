@@ -16,6 +16,7 @@ namespace Game
     {
         Player player;
         Inventory inventory;
+        Ghoul ghoul;
         Cobra cobra;
 
         new readonly List<Keys> Control = new List<Keys>()
@@ -43,9 +44,8 @@ namespace Game
         public void Initialization()
         {
             player = new Player();
-            cobra = new Cobra();
-            cobra.PosX = 500;
-            cobra.PosY = Screen.PrimaryScreen.Bounds.Size.Height - 70;
+            ghoul = new Ghoul(500, Screen.PrimaryScreen.Bounds.Size.Height - 70);
+            cobra = new Cobra(750, Screen.PrimaryScreen.Bounds.Size.Height - 70);
             inventory = new Inventory(player);
             base.Controls.Add(Health);
             base.Controls.Add(Score);
@@ -57,14 +57,16 @@ namespace Game
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
+            Health.Text = "Health " + player.Health.ToString();
             Graphics g = e.Graphics;
             player.PlayAnimation(g);
+            if(!ghoul.isDead)ghoul.PlayAnimation(g, player);
+            if (!cobra.isDead)cobra.PlayAnimation(g, player);
             timer1.Start();
         }
 
         public void Press(object sender, KeyEventArgs e)
         {
-            Health.Text = "Health " + player.Health.ToString();
             MesageToExit();
             if (Control.Contains(e.KeyCode))
                 player.Move(e);
@@ -93,6 +95,15 @@ namespace Game
                 player.OnMove = true;
                 player.Direction = "Idle";
                 player.Status = "Attack";
+                if (Math.Abs(player.PosX - ghoul.PosX) <= 20 && ghoul.Health >= 0)
+                {
+                    ghoul.Health -= 10;
+                }
+                if (ghoul.Health == 0)
+                {
+                    Points.point += ghoul.point;
+                    Score.Text = "Score " + Points.point.ToString();
+                }
                 if (Math.Abs(player.PosX - cobra.PosX) <= 20 && cobra.Health >= 0)
                 {
                     cobra.Health -= 10;

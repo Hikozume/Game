@@ -77,11 +77,16 @@ namespace Game
 
         Label FinalMessage = new Label()
         {
-            Font = new Font("Microsoft Sans Serif", 25F, FontStyle.Regular, GraphicsUnit.Point, 204),
-            Size = new Size(600, 500),
-            Location = new Point(665, 435),
+            Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, 204),
+            Size = new Size(450, 500),
+            Location = new Point(550, 350),
             BackColor = Color.Transparent,
             Text = "Congratulations, you have passed the demo version of our game and your score is:" + Points.point.ToString()
         };
+
+        private void FinalLevel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -60,6 +60,7 @@ namespace Game
         private void OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            Health.Text = "Health " + player.Health.ToString();
             player.PlayAnimation(g);
             if(!cobra.isDead)cobra.PlayAnimation(g,player);
             timer1.Start();
@@ -91,7 +92,6 @@ namespace Game
 
         public void Press(object sender, KeyEventArgs e)
         {
-            Health.Text = "Health " + player.Health.ToString();
             MesageToExit();
             if(Controls.Contains(e.KeyCode))
                 player.Move(e);

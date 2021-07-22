@@ -90,6 +90,11 @@ namespace Game
 
         private Image ModelStatus()
         {
+            if (Health <= 0)
+            {
+                Application.Restart();
+            }
+
             Bitmap newFrame = new Bitmap(Model);
 
             if (inAir)
@@ -117,6 +122,7 @@ namespace Game
             }
             if (OnMove == true)
             {
+                if (frame >= Animations[Status].Count) frame = 0;
                 if (Direction == "Left")
                 {
                     if (PosX > 0) PosX -= 10;
