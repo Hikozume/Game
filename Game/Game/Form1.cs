@@ -50,9 +50,7 @@ namespace Game
             MenuForm menu = new MenuForm();
             menu.ShowDialog();
             player = new Player();
-            cobra = new Cobra();
-            cobra.PosX = 500;
-            cobra.PosY = Screen.PrimaryScreen.Bounds.Size.Height - 70;
+            cobra = new Cobra(500, Screen.PrimaryScreen.Bounds.Size.Height - 73);
             inventory = new Inventory(player);
             base.Controls.Add(Health);
             base.Controls.Add(Score);
@@ -67,7 +65,7 @@ namespace Game
         {
             Graphics g = e.Graphics;
             player.PlayAnimation(g);
-            cobra.PlayAnimation(g);
+            if(!cobra.isDead)cobra.PlayAnimation(g,player);
             timer1.Start();
             // graph.DrawImage(player.Model, new Rectangle(new Point(50,50),new Size(100,100)),0,0,96,96,GraphicsUnit.Pixel);
         }
@@ -187,5 +185,10 @@ namespace Game
             Size = new Size(130, 30),
             Location = new Point(900, 50)
         };
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

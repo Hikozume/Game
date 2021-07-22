@@ -52,6 +52,7 @@
     <Compile Include="AndNewForm.Designer.cs">
       <DependentUpon>AndNewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IEnemy.cs" />
     <Compile Include="Points.cs" />
     <Compile Include="Cobra.cs" />
     <Compile Include="Level2.cs">
@@ -193,7 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Barrel.png" />
+    <None Include="Resources\Cobra.png" />
     <Content Include="Resources\MainMenuWith2Buttons.jpg" />
+    <None Include="Resources\new Cobra.png" />
     <Content Include="Resources\Pointer.png" />
     <Content Include="Resources\SecondLocation.jpg" />
     <Content Include="Resources\StartLock.jpg" />
