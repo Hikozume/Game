@@ -52,6 +52,27 @@
     <Compile Include="AndNewForm.Designer.cs">
       <DependentUpon>AndNewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Level2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Level2.Designer.cs">
+      <DependentUpon>Level2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Units.cs" />
+    <Compile Include="Levels.cs" />
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items.cs" />
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +96,15 @@
       <DependentUpon>Sprites.resx</DependentUpon>
     </Compile>
     <Compile Include="WorldModel.cs" />
+    <EmbeddedResource Include="Level2.resx">
+      <DependentUpon>Level2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +119,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Sprites\Sprites.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,7 +190,10 @@
     <None Include="Resources\IDK.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Barrel.png" />
     <Content Include="Resources\MainMenuWith2Buttons.jpg" />
+    <Content Include="Resources\Pointer.png" />
+    <Content Include="Resources\SecondLocation.jpg" />
     <Content Include="Resources\StartLock.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,6 +19,8 @@ namespace Game
             WindowState = FormWindowState.Maximized;
             this.BackgroundImage = Resources.MainMenuWith2Buttons;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonStart.Location = new Point(730, 365);
+            buttonExit.Location = new Point(730, 560);
         }
 
         private void DontKnowForm_Load(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace Game
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
-        {
+        {         
             this.Close();
         }
 
