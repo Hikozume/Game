@@ -127,7 +127,12 @@ namespace Game
                 LM.Visible = true;
                 return true;
             }
-            else return false;
+            else 
+            {
+                LM.Visible = false;
+                return false;
+            } 
+                
         }
     }
 }

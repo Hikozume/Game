@@ -19,7 +19,7 @@ namespace Game
         Loading load = new Loading();
         Levels levels = new Levels();
 
-        new readonly List<Keys> Controls = new List<Keys>()
+        new readonly List<Keys> Control = new List<Keys>()
         {
             //Keys.Up,
             Keys.Down,
@@ -58,7 +58,7 @@ namespace Game
         public void Press(object sender, KeyEventArgs e)
         {
             MesageToExit();
-            if (Controls.Contains(e.KeyCode))
+            if (Control.Contains(e.KeyCode))
                 player.Move(e);
             if (e.KeyCode == Keys.I)
                 inventory.Show();
