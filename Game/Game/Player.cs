@@ -82,15 +82,6 @@ namespace Game
                     Direction = "Idle";
                     Status = "Attack";
                     break;
-                case Keys.Up:
-                    Direction = "Up";
-                    OnMove = true;
-                    if (inAir) break;
-                    //if (Direction == "Up" && OnMove) break;
-                    inAir = true;
-                    jumpHeight = PosY;
-                    Status = "Jump";
-                    break;
             }
         }
 
