@@ -26,7 +26,7 @@ namespace Game
             Keys.Left
         };
 
-        Inventory inventory = new Inventory();
+        Inventory inventory;
         Loading load = new Loading();
         Levels levels = new Levels();
 
@@ -50,6 +50,10 @@ namespace Game
             MenuForm menu = new MenuForm();
             menu.ShowDialog();
             player = new Player();
+            inventory = new Inventory(player);
+            base.Controls.Add(Health);
+            Health.Text = "Health " + player.Health.ToString();
+            Health.Visible = true;
         }
 
 
@@ -70,6 +74,7 @@ namespace Game
 
         public void Press(object sender, KeyEventArgs e)
         {
+            Health.Text = "Health " + player.Health.ToString();
             MesageToExit();
             if(Controls.Contains(e.KeyCode))
                 player.Move(e);
@@ -111,14 +116,14 @@ namespace Game
 
         Label LM = new Label()
         {
-            Size = new Size(25, 25)
-            //BackColor = Color.Transparent
+            Size = new Size(25, 25),
+            BackColor = Color.Transparent,
         };
         
 
         public bool MesageToExit()
         {
-            if (player.PosX >= Size.Width - 350)
+            if (player.PosX >= Size.Width - 250)
             {
                 LM.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
                 LM.Location = new Point(this.Size.Width - 100, this.Size.Height - 100);
@@ -131,8 +136,14 @@ namespace Game
             {
                 LM.Visible = false;
                 return false;
-            } 
-                
+            }                           
         }
+
+        Label Health = new Label()
+        {
+            Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 204),
+            Size = new Size(130, 30),           
+            Location = new Point(900, 25)
+        };
     }
 }

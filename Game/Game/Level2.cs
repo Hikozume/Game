@@ -15,7 +15,7 @@ namespace Game
     public partial class Level2 : Form
     {
         Player player;
-        Inventory inventory = new Inventory();
+        Inventory inventory;
         Loading load = new Loading();
         Levels levels = new Levels();
 
@@ -38,14 +38,14 @@ namespace Game
             KeyUp += new KeyEventHandler(Unpress);
             this.BackgroundImage = Resources.SecondLocation;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            //Health.Text = player.Health.ToString();
             Initialization();
         }
 
         public void Initialization()
         {
-            //MenuForm menu = new MenuForm();
-            //menu.ShowDialog();
             player = new Player();
+            inventory = new Inventory(player);
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
@@ -95,13 +95,13 @@ namespace Game
 
         Label LM = new Label()
         {
-            Size = new Size(25, 25)
-            //BackColor = Color.Transparent
+            Size = new Size(25, 25),
+            BackColor = Color.Transparent
         };
 
         public bool MesageToExit()
         {
-            if (player.PosX >= Size.Width - 350)
+            if (player.PosX >= Size.Width - 250)
             {
                 LM.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
                 LM.Location = new Point(this.Size.Width - 100, this.Size.Height - 100);
@@ -110,7 +110,19 @@ namespace Game
                 LM.Visible = true;
                 return true;
             }
-            else return false;
+            else
+            {
+                LM.Visible = false;
+                return false;
+            }
         }
+
+        Label Health = new Label()
+        {
+            Size = new Size(25, 25),
+            //BackColor = Color.Transparent
+            Location = new Point(500, 100),
+            Visible = true                       
+        };
     }
 }

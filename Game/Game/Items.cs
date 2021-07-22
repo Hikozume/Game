@@ -11,9 +11,9 @@ namespace Game
         public string Name { get; set; }
         public int Count { get; set; }
 
-        public Action<double> Сhange;
+        public int Сhange;
 
-        public Items(string name, int count, Action<double> change)
+        public Items(string name, int count, int change)
         {
             Name = name;
             Count = count;

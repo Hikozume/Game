@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class Player
+    public class Player
     {
         public int PosX{ get; set; }
         private int frame=0;

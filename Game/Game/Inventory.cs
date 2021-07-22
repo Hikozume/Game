@@ -15,8 +15,9 @@ namespace Game
     {
         List<Items> items = new List<Items>();
         int CurrentIndex = 0;
+        Player player;
 
-        public Inventory()
+        public Inventory(Player player)
         {
             InitializeComponent();
             StartItems();
@@ -26,6 +27,7 @@ namespace Game
             KeyUp += new KeyEventHandler(Unpress);
             label1.Text = items.ElementAt(CurrentIndex).Name;
             label2.Text = items.ElementAt(CurrentIndex).Count.ToString();
+            this.player = player;
         }
 
         public void Press(object sender, KeyEventArgs e)
@@ -46,8 +48,8 @@ namespace Game
 
         private void StartItems()
         {
-            items.Add(new Items("Medium Bandage", 2, x => x.ToString()));
-            items.Add(new Items("Small Bandage", 4, x => x.ToString()));
+            items.Add(new Items("Medium Bandage", 2, 20));
+            items.Add(new Items("Small Bandage", 4, 10));
         }
 
 
@@ -71,11 +73,17 @@ namespace Game
             label2.Text = items.ElementAt(CurrentIndex).Count.ToString();
         }
 
-        private void Use_Click(object sender, EventArgs e)
+        public void Use_Click(object sender, EventArgs e)
         {
-            items.ElementAt(CurrentIndex).Count -= 1;
-            label2.Text = items.ElementAt(CurrentIndex).Count.ToString();
-            items.ElementAt(CurrentIndex).Сhange(2);
+            if (items.ElementAt(CurrentIndex).Count != 0)
+            {            
+                items.ElementAt(CurrentIndex).Count -= 1;
+                label2.Text = items.ElementAt(CurrentIndex).Count.ToString();
+                if (player.Health + items.ElementAt(CurrentIndex).Сhange > 100)
+                    player.Health = 100;
+                else
+                    player.Health += items.ElementAt(CurrentIndex).Сhange;
+            }
         }
     }
 }
