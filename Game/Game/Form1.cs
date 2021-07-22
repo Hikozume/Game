@@ -18,6 +18,8 @@ namespace Game
     {
         Player player;
         Cobra cobra;
+        Inventory inventory;
+
         new readonly List<Keys> Controls = new List<Keys>()
         {
             //Keys.Up,
@@ -27,9 +29,8 @@ namespace Game
             Keys.Left
         };
 
-        Inventory inventory;
-        Loading load = new Loading();
-        Levels levels = new Levels();
+        //Loading load = new Loading();
+        //Levels levels = new Levels();
 
         public Form1()
         {
@@ -54,8 +55,11 @@ namespace Game
             cobra.PosY = Screen.PrimaryScreen.Bounds.Size.Height - 70;
             inventory = new Inventory(player);
             base.Controls.Add(Health);
+            base.Controls.Add(Score);
             Health.Text = "Health " + player.Health.ToString();
             Health.Visible = true;
+            Score.Text = "Score " + Points.point.ToString();
+            Score.Visible = true;
         }
 
 
@@ -127,7 +131,11 @@ namespace Game
                 {
                     cobra.Health -= 10;
                 }
-                if (cobra.Health <= 0) p.point += cobra.point;
+                if (cobra.Health == 0)
+                { 
+                    Points.point += cobra.point;
+                    Score.Text = "Score " + Points.point.ToString();                    
+                } 
             }
         }
 
@@ -144,7 +152,7 @@ namespace Game
         Label LM = new Label()
         {
             Size = new Size(25, 25),
-            BackColor = Color.Transparent,
+            //BackColor = Color.Transparent,
         };
         
 
@@ -153,7 +161,7 @@ namespace Game
             if (player.PosX >= Size.Width - 250)
             {
                 LM.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
-                LM.Location = new System.Drawing.Point(this.Size.Width - 100, this.Size.Height - 100);
+                LM.Location = new Point(this.Size.Width - 100, this.Size.Height - 100);
                 LM.Text = "F";
                 base.Controls.Add(LM);
                 LM.Visible = true;
@@ -169,8 +177,15 @@ namespace Game
         Label Health = new Label()
         {
             Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 204),
-            Size = new Size(130, 30),           
+            Size = new Size(130, 30),
             Location = new Point(900, 25)
+        };
+
+        Label Score = new Label()
+        {
+            Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 204),
+            Size = new Size(130, 30),
+            Location = new Point(900, 50)
         };
     }
 }

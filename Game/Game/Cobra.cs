@@ -58,6 +58,7 @@ namespace Game
             }
             return frames;
         }
+
         public void Move()
         {
             Player player = new Player();
