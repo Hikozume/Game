@@ -35,7 +35,7 @@ namespace Game
             Sprite = Sprites.Sprites.IDK;
             Size = 100;
             PosX = 0;
-            PosY = 1005;
+            PosY = Screen.PrimaryScreen.Bounds.Size.Height - 70;
             Animations = new Dictionary<string, List<Image>>();
             Animations.Add("Idle", SetAnimation(13, 0));
             Animations.Add("Run", SetAnimation(8, 1));

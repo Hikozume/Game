@@ -73,6 +73,16 @@ namespace Game.Sprites {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cobra1 {
+            get {
+                object obj = ResourceManager.GetObject("Cobra1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Elemental {
             get {
                 object obj = ResourceManager.GetObject("Elemental", resourceCulture);
@@ -146,6 +156,16 @@ namespace Game.Sprites {
         internal static System.Drawing.Bitmap Minotaur {
             get {
                 object obj = ResourceManager.GetObject("Minotaur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_Cobra {
+            get {
+                object obj = ResourceManager.GetObject("new_Cobra", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

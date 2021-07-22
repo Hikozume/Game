@@ -20,21 +20,23 @@ namespace Game
         public string Direction { get; set; }
         public int Size { get; set; }
 
+        public bool isDead = false;
+
         private Image Idle;
         private Image Model;
         private Image Sprite;
         public Dictionary<string, List<Image>> Animations { get; set; }
 
-        public Cobra()
+        public Cobra(int posX, int posY)
         {
             Health = 100;
             Armor = 10;
             point = 10;
             Att = 15;
-            Sprite = Sprites.Sprites.Cobra;
+            Sprite = Sprites.Sprites.new_Cobra;
             Size = 100;
-            PosX = 11000;
-            PosY = 11000;
+            PosX = posX;
+            PosY = posY;
             Animations = new Dictionary<string, List<Image>>();
             Animations.Add("Idle", SetAnimation(8, 0));
             Animations.Add("Run", SetAnimation(8, 1));
@@ -42,7 +44,6 @@ namespace Game
             Animations.Add("Death", SetAnimation(6, 4));
             Idle = Animations["Idle"][0];
             Model = Idle;
-            Move();
         }
         private List<Image> SetAnimation(int animFrames, int row, bool flip = false)
         {
@@ -59,46 +60,65 @@ namespace Game
             return frames;
         }
 
-        public void Move()
+        public void Move(Player player)
         {
-            Player player = new Player();
-            if (Math.Abs(player.PosX - PosX) > 150 && Math.Abs(player.PosX - PosX) < 20)
+            //Player player = new Player();
+            if (Health <= 0)
             {
-                if ((player.PosX - PosX) > 150) Direction = "Left";
+                isDead = true;
+                Status = "Death";
+            }
+            if (Math.Abs(player.PosX - PosX) > 20)
+            {
+                if ((player.PosX - PosX) < 0) Direction = "Left";
                 else Direction = "Right";
                 OnMove = true;
                 Status = "Run";
             }
-            else OnMove = false;
-            if (Health == 0)
+            else
             {
                 OnMove = false;
-                Status = "Death";
-            }
-            if (Math.Abs(player.PosX - PosX) <= 20)
-            {
-                if (Direction == "Idle" && OnMove)
-                    OnMove = true;
                 Direction = "Idle";
                 Status = "Attack";
+                player.Health -= 1;
             }
+            //if (Math.Abs(player.PosX - PosX) <= 20)
+            //{
+            //    if (Direction == "Idle" && OnMove)
+            //        OnMove = true;
+            //    Direction = "Idle";
+            //    Status = "Attack";
+            //    player.Health -= 5;
+            //}
         }
 
-        public void PlayAnimation(Graphics g) => g.DrawImage(ModelStatus(), PosX, PosY);
-        private Image ModelStatus()
-        {
-            Bitmap newFrame = new Bitmap(Model);
 
+        public void PlayAnimation(Graphics g, Player player) => g.DrawImage(ModelStatus(player), PosX, PosY);
+        private Image ModelStatus(Player player)
+        {
+            Move(player);
+            Bitmap newFrame = new Bitmap(Model);
+            if (Status=="Death")
+            {
+                newFrame = new Bitmap(Animations[Status][frame]);
+                frame++;
+                if (frame >= Animations[Status].Count)
+                {
+                    isDead = true;
+                    newFrame = null;
+                }
+                return newFrame;
+            }
             if (OnMove == true)
             {
                 if (Direction == "Left")
                 {
-                    PosX -= 10;
+                    PosX -= 5;
                     flip = true;
                 }
                 if (Direction == "Right")
                 {
-                    PosX += 10;
+                    PosX += 5;
                     flip = false;
                 }
                 newFrame = new Bitmap(Animations[Status][frame]);
@@ -107,9 +127,9 @@ namespace Game
             }
             if (OnMove == false)
             {
-                frame = 0;
-                Status = "Idle";
-                newFrame = new Bitmap(Idle);
+                if (frame >= Animations[Status].Count) frame = 0;
+                newFrame = new Bitmap(Animations[Status][frame]);
+                frame++;
             }
             if (flip) newFrame.RotateFlip(RotateFlipType.RotateNoneFlipX);
             return Model = newFrame;
